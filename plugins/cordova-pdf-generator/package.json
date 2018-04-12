@@ -1,0 +1,102 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-pdf-generator",
+        "scope": null,
+        "escapedName": "cordova-pdf-generator",
+        "name": "cordova-pdf-generator",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/Worker/Desktop/GRIBOV/cordova/react-app/node_modules"
+    ]
+  ],
+  "_from": "cordova-pdf-generator@latest",
+  "_id": "cordova-pdf-generator@2.0.1",
+  "_inCache": true,
+  "_location": "/cordova-pdf-generator",
+  "_nodeVersion": "6.11.5",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-pdf-generator_2.0.1_1519388843215_0.9900394935331733"
+  },
+  "_npmUser": {
+    "name": "cvaldezr",
+    "email": "cvaldezrx@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-pdf-generator",
+    "scope": null,
+    "escapedName": "cordova-pdf-generator",
+    "name": "cordova-pdf-generator",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-pdf-generator/-/cordova-pdf-generator-2.0.1.tgz",
+  "_shasum": "c6494d128ca4799792d53dcf8dc382407ce496ca",
+  "_shrinkwrap": null,
+  "_spec": "cordova-pdf-generator",
+  "_where": "/Users/Worker/Desktop/GRIBOV/cordova/react-app/node_modules",
+  "author": {
+    "name": "cesar"
+  },
+  "bugs": {
+    "url": "https://github.com/cesarvr/pdf-generator/issues"
+  },
+  "cordova": {
+    "id": "cordova-pdf-generator",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "description": "is a HTML to PDF (offline) Generator.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "c6494d128ca4799792d53dcf8dc382407ce496ca",
+    "tarball": "https://registry.npmjs.org/cordova-pdf-generator/-/cordova-pdf-generator-2.0.1.tgz",
+    "fileCount": 19,
+    "unpackedSize": 765561
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "gitHead": "4c2ca3f96e3f3ef98b800be405a383c1b52222c8",
+  "homepage": "https://github.com/cesarvr/pdf-generator#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "cvaldezr",
+      "email": "cvaldezrx@gmail.com"
+    }
+  ],
+  "name": "cordova-pdf-generator",
+  "optionalDependencies": {},
+  "readme": "# cordova-pdf-generator\n\nSimple plugin to generate (offline) pdf. the plugin basically transform HTML to PDF and also provide the mechanism to share the pdf to other apps like Mail, etc. For now works in iOS and Android, if you want to add other platform feel free contribute.   \n\nThe iOS HTML to PDF transformation is based in this work [BNHtmlPdfKit](https://github.com/brentnycum/BNHtmlPdfKit), I just add a new method to allow transformation between plain HTML to PDF.\n\n## Getting Started \n\n[![Demo](https://img.youtube.com/vi/PPHFUxzHH44/0.jpg)](https://www.youtube.com/watch?v=PPHFUxzHH44)\n\n\nHere you can find a [starting guide](https://dzone.com/articles/how-to-write-a-html-to-pdf-app-for-androidios-usin).\n\n## Features\n\n- Generates a PDF document using a URL or HTML.\n- Open-with menu, open the context menu and (push to cloud, print, save, mail, etc...).  \n- Return the Base64 file representation back, so you can upload the file to a server (IOS & Android only).\n\n\n## Supported Platforms\n\n* Android\n* iOS\n\n## Installing the easy way (Cordova CLI)\n\n    cordova plugin add cordova-pdf-generator\n\n\n## Installing using Plugman\n\n    cordova platform add ios\n    plugman install --platform ios --project platforms/ios --plugin cordova-pdf-generator\n\n\n## Installing using NPM\n\n    npm install cordova-pdf-generator\n    cordova plugins add node_modules/cordova-pdf-generator\n\n\n## Installing the hard way.\n\nClone the plugin\n\n    $ git clone https://github.com/cesarvr/pdf-generator\n\nCreate a new Cordova Project\n\n    $ cordova create hello com.example.helloapp Hello\n\nInstall the plugin\n\n    $ cd hello\n    $ cordova plugin add ../pdf-generator\n\n\n\n## API\n\nBefore using the plugin just make sure that the device is ready by listening to the onDeviceReady event:\n\n```js\ndocument.addEventListener('deviceready', function(){\n  // start using cordova plugin here.\n})\n\n```\n\n\n### Description\n\nThe plugin expose a global variable named **pdf**, this variable expose the following functions.\n\n#### pdf.fromURL( url, options )\n\nCreates a PDF using a URL, it download the document into an in memory Webkit object, and renders it into a PDF.\n\n- **url** : Takes the URL with the HTML document you want to transform to PDF, once the document finish loading is render by webkit and transformed into a PDF file.\n\n\nExample:\n\n```js\nlet options = {\n                documentSize: 'A4',\n                type: 'base64'\n              }\n\npdf.fromURL('http://www.google.es', options)\n    .then(()=>'ok')\n    .catch((err)=>console.err(err))\n```\n\n#### pdf.fromData( url, options )\n\nCreates a PDF using string with the HTML representation, it download the document into an in memory Webkit object, and renders it into a PDF.\n\n- **data** : Takes a string representing the HTML document, it load this in Webkit and creates a PDF.  \n\nExample:\n\n```js\nlet options = {\n                documentSize: 'A4',\n                type: 'base64'\n              }\n\npdf.fromData('<html><h1>Hello World</h1></html>', options)\n    .then((base64)=>'ok')   // it will\n    .catch((err)=>console.err(err))\n```\n\n#### Options\n\n##### documentSize\n\n- Its take ```A4, A3, A2``` this specify the format of the paper, just available in iOS, in Android this option is ignored.\n\n##### type\n\n- ```base64``` it will return a Base64 representation of the PDF file. ```{ type: 'base64' } ``, is not type is provided this one is choosen by default. `\n\n```js\nlet options = {\n                documentSize: 'A4',\n                type: 'base64'\n              }\n\npdf.fromData('<html><h1>Hello World</h1></html>', options)\n    .then((base64)=> console.log(base64) )   // returns base64:JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PC9DcmVh...\n    .catch((err)=>console.err(err))\n\n\n```\n\n\n\n- ```share``` It will delegate the file to the OS printing infraestructure, this basically will allow the user to handle the file himself using the mobile OS features available.\n\n```js\nlet options = {\n                documentSize: 'A4',\n                type: 'share'\n              }\n\npdf.fromData( '<html><h1>Hello World</h1></html>', options)\n    .then((stats)=> console.log('status', stats) )   // ok..., ok if it was able to handle the file to the OS.  \n    .catch((err)=>console.err(err))\n\n```\n\n\n\n##### filename\n\n- You can specify the name of the PDF file.  \n\n```js\nlet options = {\n                documentSize: 'A4',\n                type: 'share',\n                fileName: 'myFile.pdf'\n              }\n\npdf.fromData( '<html><h1>Hello World</h1></html>', options)\n    .then((stats)=> console.log('status', stats) )   // ok..., ok if it was able to handle the file to the OS.  \n    .catch((err)=>console.err(err))\n\n```\n\n\n\n\n#### Other Use Cases\n##### Loading from Device Filesystem.\n\n```js\n\n      //Example: file:///android_asset/index.html\n\n      function printInternalFile(param) {\n\n        /* generate pdf using url. */\n        if(cordova.platformId === 'ios') {\n\n          // To use window.resolveLocalFileSystemURL, we need this plugin https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-file/\n          // You can add this by doing cordova plugin add cordova-plugin-file or\n          // cordova plugin add https://github.com/apache/cordova-plugin-file\n          window.resolveLocalFileSystemURL(cordova.file.applicationDirectory,\n            (url) => {\n              var file = param.replace('file:///android_asset/',url.nativeURL);\n\n              pdf.fromURL(file, {\n                  documentsize: 'a4',\n                  landscape: 'portrait',\n                  type: 'share'\n              })\n                .then((stats)=> this.preparetogobackground )\n                .catch((err)=> this.showerror)\n            },\n            (err) =>\n            console.log('error', err, '  args ->', arguments)\n          );\n        }else {\n              pdf.fromURL(param, {\n                  documentsize: 'a4',\n                  landscape: 'portrait',\n                  type: 'share'\n              })\n                .then((stats)=> this.preparetogobackground )\n                .catch((err)=> this.showerror)\n        }\n    }\n```\n\n##### Ionic/Angular 2 Example:\n\n```js\nimport { Component } from '@angular/core';\n\nimport { NavController } from 'ionic-angular';\n\ndeclare var cordova:any;    //global;\n\n@Component({\n  selector: 'page-home',\n  templateUrl: 'home.html'\n})\nexport class HomePage {\n\n  constructor(public navCtrl: NavController) {\n      const before = Date.now();\n\n            document.addEventListener('deviceready', () => {\n                console.log('DEVICE READY FIRED AFTER', (Date.now() - before), 'ms');\n\n                //generate the pdf.\n                cordova.plugins.pdf.fromData( '<html> <h1>  Hello World  </h1> </html>', options )\n                .then(()=>'ok')\n                .catch((err)=>console.err(err))\n  }\n\n}\n\n```\n\n#### Deprecated\n\nHere are examples to use the deprecated methods.\n\nThis generates a pdf from a URL, it convert HTML to PDF and returns the file representation in base64.  \n\n```js\n document.addEventListener('deviceready', function() {\n\n        pdf.htmlToPDF({\n            url: 'http://www.google.es',\n            documentSize: 'A4',\n            landscape: 'portrait',\n            type: 'base64'\n        }, this.success, this.failure);\n\n });\n```\n\nThe same but giving HTML without URL.\n\n```js\n document.addEventListener('deviceready', function() {\n\n     pdf.htmlToPDF({\n            data: '<html> <h1>  Hello World  </h1> </html>',\n            documentSize: 'A4',\n            landscape: 'portrait',\n            type: 'base64'\n        }, this.success, this.failure);\n\n });\n\n```\n\nOpening the pdf with other app menu.\n\n```js\n document.addEventListener('deviceready', function() {\n\n     pdf.htmlToPDF({\n            data: '<html> <h1>  Hello World  </h1> </html>',\n            documentSize: 'A4',\n            landscape: 'portrait',\n            type: 'share' //use share to open the open-with-menu.\n        }, this.success, this.failure);\n\n });\n```\n\n\n\n# Demo\n\n- Cordova/Javascript [Demo](https://github.com/cesarvr/pdf-generator-example).\n- Ionic/Angular 2 [Example](https://github.com/cesarvr/ionic2-basic-example)\n\n\nInstall iOS or Android platform\n\n    cordova platform add ios\n    cordova platform add android\n\nRun the code\n\n    cordova run ios\n    cordova run android\n\n## More Info\n\n[here]:https://github.com/cesarvr/pdf-generator-example\n\nFor more information on setting up Cordova see [the documentation](http://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html#The%20Command-Line%20Interface)\n\nFor more info on plugins see the [Plugin Development Guide](http://cordova.apache.org/docs/en/4.0.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesarvr/pdf-generator.git"
+  },
+  "scripts": {},
+  "version": "2.0.1"
+}

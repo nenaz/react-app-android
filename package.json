@@ -1,0 +1,30 @@
+{
+    "name": "io.cordova.hellocordova",
+    "version": "1.0.0",
+    "displayName": "Cash",
+    "cordova": {
+        "platforms": [
+            "android",
+            "ios"
+        ],
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-device": {},
+            "cordova-plugin-file": {},
+            "cordova-pdf-generator": {},
+            "cordova-plugin-geolocation": {
+                "GEOLOCATION_USAGE_DESCRIPTION": " "
+            }
+        }
+    },
+    "dependencies": {
+        "cordova-android": "~6.2.3",
+        "cordova-ios": "~4.4.0",
+        "cordova-pdf-generator": "^2.0.1",
+        "cordova-plugin-compat": "^1.2.0",
+        "cordova-plugin-device": "^1.1.7",
+        "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-geolocation": "^2.4.3",
+        "cordova-plugin-whitelist": "1"
+    }
+}
