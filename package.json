@@ -14,6 +14,10 @@
             "cordova-pdf-generator": {},
             "cordova-plugin-geolocation": {
                 "GEOLOCATION_USAGE_DESCRIPTION": " "
+            },
+            "com.oauthio.plugins.oauthio": {},
+            "phonegap-plugin-barcodescanner": {
+                "CAMERA_USAGE_DESCRIPTION": " "
             }
         }
     },
@@ -25,6 +29,10 @@
         "cordova-plugin-device": "^1.1.7",
         "cordova-plugin-file": "^4.3.3",
         "cordova-plugin-geolocation": "^2.4.3",
-        "cordova-plugin-whitelist": "1"
+        "cordova-plugin-inappbrowser": "^3.0.0",
+        "cordova-plugin-whitelist": "1",
+        "oauth-phonegap": "git+https://github.com/oauth-io/oauth-phonegap.git",
+        "phonegap-plugin-barcodescanner": "^6.0.8",
+        "com.oauthio.plugins.oauthio": "https://github.com/oauth-io/oauth-phonegap"
     }
 }

@@ -19,6 +19,18 @@
                         {
                             "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"https://oauth.io\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -32,6 +44,12 @@
             "*-Info.plist": {
                 "parents": {
                     "NSLocationWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string> </string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSCameraUsageDescription": [
                         {
                             "xml": "<string> </string>",
                             "count": 1
@@ -59,6 +77,16 @@
         },
         "cordova-plugin-geolocation": {
             "GEOLOCATION_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "com.oauthio.plugins.oauthio": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
@@ -286,6 +314,31 @@
             "clobbers": [
                 "navigator.geolocation"
             ]
+        },
+        {
+            "id": "cordova-plugin-inappbrowser.inappbrowser",
+            "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+            "pluginId": "cordova-plugin-inappbrowser",
+            "clobbers": [
+                "cordova.InAppBrowser.open",
+                "window.open"
+            ]
+        },
+        {
+            "id": "com.oauthio.plugins.oauthio.OAuth",
+            "file": "plugins/com.oauthio.plugins.oauthio/dist/oauth.js",
+            "pluginId": "com.oauthio.plugins.oauthio",
+            "merges": [
+                "OAuth"
+            ]
+        },
+        {
+            "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+            "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+            "pluginId": "phonegap-plugin-barcodescanner",
+            "clobbers": [
+                "cordova.plugins.barcodeScanner"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -294,6 +347,9 @@
         "cordova-plugin-compat": "1.2.0",
         "cordova-plugin-file": "4.3.3",
         "cordova-pdf-generator": "2.0.1",
-        "cordova-plugin-geolocation": "2.4.3"
+        "cordova-plugin-geolocation": "2.4.3",
+        "cordova-plugin-inappbrowser": "3.0.0",
+        "com.oauthio.plugins.oauthio": "0.2.4",
+        "phonegap-plugin-barcodescanner": "6.0.8"
     }
 }

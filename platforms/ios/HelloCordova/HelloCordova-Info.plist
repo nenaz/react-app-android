@@ -53,6 +53,8 @@
       <true/>
     </dict>
     <key>NSLocationWhenInUseUsageDescription</key>
+    <string/>
+    <key>NSCameraUsageDescription</key>
     <string></string>
   </dict>
 </plist>

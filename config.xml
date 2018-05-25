@@ -25,6 +25,7 @@
     </platform>
     <engine name="android" spec="~6.2.3" />
     <engine name="ios" spec="~4.4.0" />
+    <plugin name="com.oauthio.plugins.oauthio" spec="https://github.com/oauth-io/oauth-phonegap" />
     <plugin name="cordova-pdf-generator" spec="^2.0.1" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
     <plugin name="cordova-plugin-file" spec="^4.3.3" />
@@ -32,4 +33,7 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value=" " />
     </plugin>
     <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="phonegap-plugin-barcodescanner" spec="^6.0.8">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
+    </plugin>
 </widget>
